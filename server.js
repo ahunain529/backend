@@ -1,6 +1,11 @@
 const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+// Load environment variables
+dotenv.config();
+
 const app = express();
 const port = 5000;
 
@@ -10,7 +15,7 @@ app.use(cors());
 
 // PostgreSQL connection
 const pool = new Pool({
-  connectionString: 'postgresql://neondb_owner:npg_fz78TnODrKpw@ep-quiet-paper-a1xykuza-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require',
+  connectionString: process.env.DATABASE_URL,
 });
 
 // Test database connection
